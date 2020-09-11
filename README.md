@@ -16,6 +16,10 @@ const path = require('path');
 
 /** @type {import('webpack').Configuration} */
 const config = {
+     devServer: {
+          contentBase: '/dist',
+          port: 5000,
+     },
      entry: {
           main: path.resolve(__dirname, 'src', 'main.ts'),
      },
@@ -28,10 +32,11 @@ const config = {
      plugins: [
           new MiniCssExtractPlugin({
                filename: 'styles/[name].css',
+               chunkFilename: '[id].css',
           }),
           new HtmlWebpackPlugin({
-               template: path.join(__dirname, "src/pages/index.html"),
-               filename: "index.html",
+               template: path.join(__dirname, 'src/pages/index.html'),
+               filename: 'index.html',
           }),
      ],
      module: {
@@ -62,12 +67,6 @@ const config = {
      },
      resolve: {
           alias: { '@': path.resolve(__dirname, 'src') },
-     },
-     devServer: {
-          contentBase: path.resolve(__dirname, 'dev-dist'),
-          inline: true,
-          host: 'localhost',
-          port: 5000,
      },
 };
 
@@ -101,9 +100,10 @@ module.exports = function (env, argv) {
      config.module.rules.push(diff.sass[argv.mode]);
      config.module.rules.push(diff.css[argv.mode]);
 
+    console.log("Webpack content served on http://localhost:5000/dist")
+
      return config;
 };
-
 ```
 
 ### NPM Scripts

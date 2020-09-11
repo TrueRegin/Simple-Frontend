@@ -1,5 +1,5 @@
 {
-     "name": "simple-frontend",
+     "name": "sourzce-client",
      "scripts": {
           "build": "webpack --config=webpack.config.js --mode=production",
           "dev": "webpack-dev-server --config=webpack.config.js --mode=development --watch",
