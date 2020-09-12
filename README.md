@@ -42,18 +42,15 @@ const config = {
      module: {
           rules: [
                {
-                    // Remove this object if your project doesn't use html
                     test: /\.html/,
                     use: ['html-loader'],
                },
                {
-                    // Remove this object if your project doesn't use typescript
                     test: /\.ts/,
                     use: ['ts-loader'],
                     exclude: /node_modules/,
                },
                {
-                    // Remove this line
                     test: /\.(svg|png|jpe?g|gif)$/,
                     use: {
                          loader: 'file-loader',
@@ -63,6 +60,16 @@ const config = {
                          },
                     },
                },
+               {
+                test: /\.(eot|woff2?)$/,
+                use: {
+                     loader: 'file-loader',
+                     options: {
+                          name: 'fonts/[name].[ext]',
+                          outputPath: 'assets',
+                     },
+                },
+           }
           ],
      },
      resolve: {
