@@ -50,7 +50,7 @@ const config = {
                     },
                },
                {
-                test: /\.(eot|woff2?)$/,
+                test: /\.(eot|ttf|woff2?)$/,
                 use: {
                      loader: 'file-loader',
                      options: {
